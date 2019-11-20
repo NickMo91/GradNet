@@ -5,7 +5,7 @@ userController = {
     userModel.getAllUsers()
     .then(results => {
       console.log("success getting users")
-      res.send(results);
+      res.send(results.rows);
     })
     .catch(err => console.error("ERROR getting users: ", err))
   }
