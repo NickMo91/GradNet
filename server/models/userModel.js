@@ -12,7 +12,7 @@ userModel = {
   }, 
 
   addUser: (params) => {
-    const queryStr = `INSERT INTO users (first_name, last_name, username, email, password, biography, job_title, photo) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`;
+    const queryStr = `INSERT INTO users (first_name, last_name, username, email, password) VALUES ($1, $2, $3, $4, $5)`;
     return dbPool.query(queryStr, params);
   }
 }

@@ -1,0 +1,28 @@
+.signUpForm_container {
+  border: 1px solid black;
+    margin: 0 25% 0 25%;
+}
+
+.signUpForm {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.signUpForm_title {
+  text-align: center;
+}
+
+label {
+  padding: 3%;
+}
+
+.signUpForm_submit {
+  width: 50%;
+  height: 30px;
+  margin-bottom: 3%;
+  margin-top: 3%;
+  -webkit-appearance: none;
+  border: none;
+  font-size: 20px;
+}

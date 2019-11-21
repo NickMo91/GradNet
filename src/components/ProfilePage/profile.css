@@ -1,0 +1,25 @@
+.profile_header_container {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+}
+
+.profile_header_container_info {
+  display: flex;
+  flex-flow: column;
+  align-self: center;
+}
+
+.profile_header_container_title {
+  display: flex;
+  flex-flow: column;
+  align-self: center;
+}
+
+.profile_header_container_photo {
+  width: 200px;
+  height: 200px;
+  border: 1px solid green;
+  border-radius: 30%;
+  text-align: center;
+}
