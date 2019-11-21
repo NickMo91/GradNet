@@ -1,6 +1,3 @@
-SELECT 'CREATE DATABASE gradnet'
-WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'gradnet')\gexec
-\c gradnet;
 
 DROP TABLE IF EXISTS Users;
 CREATE TABLE Users (
