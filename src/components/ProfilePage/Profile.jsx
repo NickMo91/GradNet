@@ -1,5 +1,6 @@
 import React from "react";
 import Axios from 'axios'
+import ImageUploader from 'react-images-upload';
 import "./profile.css"
 
 class Profile extends React.Component {
@@ -8,20 +9,35 @@ class Profile extends React.Component {
   
     this.state = {
        allUsers: [],
-       current_user: {}
+       currentUser: {},
+       pictures: [],
+       isSubmitted: false,
     }
-    this.getUser = this.getUser.bind(this)
+    this.getCurrentUser = this.getCurrentUser.bind(this);
+    this.onDrop = this.onDrop.bind(this);
   }
-
   componentDidMount() {
-    this.getUser();
+    this.getCurrentUser()
   }
 
-  getUser() {
+  onDrop(picture) {
+    this.setState({
+      pictures: this.state.pictures.concat(picture),
+      isSubmitted: !this.state.isSubmitted 
+    });
+  }
+
+  getCurrentUser() {
     return Axios.get(`/users`)
     .then(({data}) => {
-      this.setState({
-        allUsers: data
+      let allUsers = data;
+      let currentUser = data[data.length - 1];
+      Axios.get(`/users/${currentUser.id}`)
+      .then(({data})=> {
+        this.setState({
+          allUsers,
+          currentUser: data[0]
+        })
       })
     })
     .catch(err => {
@@ -29,33 +45,38 @@ class Profile extends React.Component {
     })
   }
 
-  // getCurrentUser(id) {
-  //   const current_user = this.state.allUsers.reduce((curUser, user) => {
-  //     return user.id === id ? curUser = user : "user Doesn't exist";
-  //   }, {})
-
-  //   return current_user;
-  // }
-  
   render() {
+    console.log("state: ",this.state)
     return (
       <div>
-        <h1>Welcome to userProfile</h1>
         <div className="profile_header_container">
           <div className="profile_header_container_info">
-            <p>userName: Nikolas</p> 
-            <p>boot camp name: Hack Reactor</p>
+            <p className="profileTexts">{this.state.currentUser.username}</p> 
+            <p className="profileTexts">Hack Reactor</p>
           </div>
+          {this.state.pictures.length > 0 ? 
           <div className="profile_header_container_photo">
-             <img src="" alt="Your photo Here!"/>
-          </div>
+             <img src={this.state.pictures[0].name} alt="In the future your image will appear here!" />
+          </div> :
+          <ImageUploader
+                withIcon={true}
+                buttonText='Add image'
+                onChange={this.onDrop}
+                imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                maxFileSize={5242880}
+                className="imgLoad"
+                label=""
+            />
+          }
           <div className="profile_header_container_title">
-            <p>job title: Software Engineer</p>
-            <p>email: myemail@gmail.com</p>
+            <p className="profileTexts">Software Engineer</p>
+            <p className="profileTexts">{this.state.currentUser.email}</p>
           </div>
         </div>
         <div className="profile_header_container_bio">
           Tell me about yourself?
+          <br/>
+          <input type="textarea"/>
         </div>
       </div>
     );

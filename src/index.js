@@ -10,6 +10,19 @@ import "./styles.css";
 const routing = (
   <Router>
     <div>
+      <nav className="navBar">
+          <ul>
+            <li>
+              <Link to="/" className="navLinks"></Link>
+            </li>
+            <li>
+              <Link to="/profile" className="navLinks">Profile</Link>
+            </li>
+            <li>
+              <Link to="/Home" className="navLinks">Home</Link>
+            </li>
+          </ul>
+        </nav>
       <Switch>
         <Route exact path="/" component={App} />
         <Route path="/profile" component={Profile} />

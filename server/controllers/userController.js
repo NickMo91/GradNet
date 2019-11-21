@@ -23,10 +23,22 @@ userController = {
   },
 
   addUser: (req, res) => {
-    const params = [req.body.first_name, req.body.last_name, req.body.username, req.body.email, req.body.password, req.body.biography, req.body.job_title, req.body.photo]
+    const params = [req.body.first_name, req.body.last_name, req.body.username, req.body.email, req.body.password]
     return userModel.addUser(params)
     .then(() => {
       console.log("success adding user!")
+      res.sendStatus(201);
+    })
+    .catch(err => {
+      console.error("ERROR adding user", err)
+    })
+  }, 
+
+  addPhoto: (req, res) => {
+    const params = [req.body.photo, req.params.user_id];
+    return userModel.addUserPhoto(params)
+    .then(() => {
+      console.log("success adding photo!")
       res.sendStatus(201);
     })
     .catch(err => {

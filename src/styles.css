@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+}
+
+nav {
+  border-bottom: 0.5px solid black;
+  margin-bottom: 3%;
+  height: 5%;
+}
+
+.navBar > ul{
+  display: flex;
+  flex-flow: row;
+}
+
+li {
+  list-style-type: none;
+  text-decoration: none;
+  padding: 3%;
+}
+
+.navLinks {
+  text-decoration: none;
+  font-size: 25px;
+}
+
+
+.homeTitle {
+  align-self: center;
+  text-align: center;
+  margin-bottom: 3%;
+}

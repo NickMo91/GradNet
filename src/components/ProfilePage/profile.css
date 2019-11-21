@@ -23,3 +23,16 @@
   border-radius: 30%;
   text-align: center;
 }
+
+.imgLoad {
+  width: 25%;
+}
+
+.profileTexts {
+  font-size: 25px;
+  padding-bottom: 3%;
+}
+
+.profile_header_container_bio {
+  padding-top: 5%;
+}

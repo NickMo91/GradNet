@@ -8,8 +8,8 @@
     "clean": "rm dist/bundle.js",
     "build-dev": "webpack -d --mode development --watch",
     "build-prod": "webpack -p --mode production",
-    "start": "nodemon server/index.js",
-    "start-prod": "node server/index.js"
+    "start": "node server/index.js",
+    "start-dev": "nodemon server/index.js"
   },
   "keywords": [],
   "author": "",
@@ -36,6 +36,7 @@
     "pg": "^7.13.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-images-upload": "^1.2.7",
     "react-router-dom": "^5.1.2"
   }
 }
